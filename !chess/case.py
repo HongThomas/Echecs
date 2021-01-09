@@ -25,7 +25,7 @@ def color(case,ech):
     return 'white'
 
 def case(case,ech):
-    '''Retourne un tableau si case existe,
+    '''Retourne un tableau avec si case existe,
     la couleur et case de la pièce.
     '''
     position = conversion_tab(case)
