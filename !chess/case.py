@@ -36,4 +36,3 @@ def case(case,ech):
     tab_case.append(color(case,ech))
     tab_case.append(position)
     return tab_case
-
