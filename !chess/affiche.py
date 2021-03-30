@@ -51,7 +51,7 @@ def reverse(ech):
         i += 1
     return new_ech
 
-def affichage(ech, turn):
+def affichage2(ech, turn):
     '''Affcihe l'échéquier selon
     sa couleur.
     Prend en paramètre le tableau 
@@ -87,3 +87,20 @@ def affichage(ech, turn):
             i += 1
         print('--------------------')
         print('   a b c d e f g h')       
+
+def affichage(ech):
+    i = 8
+    z = 56
+    while i > 0:
+        j = 0
+        ligne = str(i) + "| "
+        while j < 8:
+            ligne += str(conversion(ech[z])) + " "
+            z += 1
+            j += 1
+        
+        print(ligne)
+        i -= 1
+        z-=16
+    print('--------------------')
+    print('   a b c d e f g h') 

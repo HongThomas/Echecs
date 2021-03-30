@@ -2,14 +2,25 @@ from affiche import*
 from case import*
 from coups import*
 
-ech =   [   8, 9,10,11,12,10, 9, 8,#noires
-            7, 7, 7, 7, 7, 7, 7, 7,       
+ech2 =  [   2, 3, 4, 5, 6, 4, 3, 2,
+            1, 1, 1, 1, 1, 1, 1, 1,     
             0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, #cases vides
+            0, 0, 0, 0, 0, 0, 0, 0, 
             0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0,
-            1, 1, 1, 1, 1, 1, 1, 1, 
-            2, 3, 4, 5, 6, 4, 3, 2 ]#blancs
+            7, 7, 7, 7, 7, 7, 7, 7,
+            8, 9,10,11,12,10, 9, 8,
+        ]
+
+ech =   [   8, 9,10,11,12,10, 9, 8,
+            7, 7, 7, 7, 7, 7, 7, 7,   
+            0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0,
+            1, 1, 1, 1, 1, 1, 1, 1,
+            2, 3, 4, 5, 6, 4, 3, 2,
+        ]
 
          
 white = [ { 'type' : 'tour', 'pos' : 'a1', 'reach' : [0] }, { 'type' : 'cavalier', 'pos' : 'b1', 'reach' : [16,18] }, { 'type' : 'fou', 'pos' : 'c1', 'reach' : [2] },
@@ -30,11 +41,9 @@ black = [ { 'type' : 'tour', 'pos' : 'a8', 'reach' : [56] }, { 'type' : 'cavalie
         { 'type' : 'pion', 'pos' : 'h7', 'reach' : [47,39] } ]
 
 jouer = 'o'
-echec = mate(ech)
-print(echec)
-while jouer == 'o' and echec == 'continue':
+while jouer == 'o':
         turn = 'white'
-        print(affichage(ech, turn))
+        print(affichage(ech))
         print('****************************************')
         deplacement = input('Tour blanc (dép->fin): ')
         ech = move(deplacement,ech, turn)
@@ -42,18 +51,10 @@ while jouer == 'o' and echec == 'continue':
         print('****************************************')
 
         turn = 'black'
-        print(affichage(ech, turn))
+        print(affichage(ech))
         print('****************************************')
         deplacement = input('Tour noir (dép->fin): ')
         ech = move(deplacement, ech, turn)
  
         print('****************************************')
-
-        echec = mate(ech)
         jouer = input('Continuer ? ')
-
-
-if echec == 'win_white':
-        print('Victoire des blancs')
-else:
-        print('Victoire des noirs')

@@ -8,25 +8,42 @@ def move(deplacement, ech, turn):
     ech[depart] = 0
     return ech   
 
-#def pion(dico):
-#    cases_possibles = []
-#    pos_depart = dico['pos']
-#    if dico == 'white' and dico['type'] == 'pion':
-#        cases_possibles += [pos+8]
-#        if pos > 44 and pos < 56:
- #           cases_possibles += [pos+16] 
-  #  else:
-   #     cases_possibles += [pos-8]
-    #    if pos > 7 and pos < 16:
-     #       cases_possibles += [pos-8, pos-16]
-      #  else:
-       #     cases_possibles += [pos-8]
-    #return cases_possibles
+def pion(ech, pos_depart):
+    coups_possibles = []
+    pos_depart = conversion_tab(pos_depart)
+    couleur = color(ech[pos_depart])
 
-def mate(ech):
-    state = 'continue'
-    if 11 not in ech:
-        state = 'win_white'
-    if 6 not in ech:
-        state = 'win_black'
-    return state
+
+    if couleur == 'black':
+
+        # Cas où les pièces sont au départs
+        if pos_depart > 47 and pos_depart < 56:
+            if color(ech[pos_depart-8]) =='empty':
+                coups_possibles.append(pos_depart - 8)
+            if color(ech[pos_depart-16]) =='empty':
+                coups_possibles.append(pos_depart - 16)
+
+        else:
+            if color(ech[pos_depart - 8]) == 'empty' and exist(pos_depart-8):
+                coups_possibles.append(pos_depart - 8)
+            if color(ech[pos_depart - 9]) == 'black':
+                coups_possibles.append(pos_depart - 9)
+            if color(ech[pos_depart - 7]) =='black':
+                coups_possibles.append(pos_depart - 7)
+
+    else:
+
+
+        if pos_depart < 16 and pos_depart > 7:
+            if color(ech[pos_depart+8]) =='empty' and exist(pos_depart+8):              
+                coups_possibles.append(pos_depart + 8)
+            if color(ech[pos_depart+16]) =='empty' and exist(pos_depart+16):
+                coups_possibles.append(pos_depart + 16)
+        else:
+            if color(ech[pos_depart + 8]) == 'empty' and exist(pos_depart+8):
+                coups_possibles.append(pos_depart + 8)
+            if color(ech[pos_depart + 9]) == 'white':
+                coups_possibles.append(pos_depart + 9)
+            if color(ech[pos_depart + 7]) =='white':
+                coups_possibles.append(pos_depart + 7)
+    return coups_possibles

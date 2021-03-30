@@ -1,15 +1,30 @@
-ech = [1,2,3]
+from case import* 
+from coups import*
+from affiche import*
 
-def echec(ech):
-    if 4 in ech:
-        return 'lol'
-    if 5 in ech:
-        return 'xd'
-    return 'nope'
+ech =   [   8, 9,10,11,12,10, 9, 8,
+            7, 7, 7, 7, 7, 7, 7, 7,   
+            0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 
+            0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0,
+            1, 1, 1, 1, 1, 1, 1, 1,
+            2, 3, 4, 5, 6, 4, 3, 2,
+        ]
 
-k = echec(ech)
-while k != 'xd' and k != 'lol':
-    print('0')
-    v = int(input('v: '))
-    ech.append(v)
-    k = echec(ech)
+def affichage(ech):
+    i = 8
+    z = 63
+    while i > 0:
+        j = 0
+        ligne = str(i) + "| "
+        while j < 8:
+            ligne += str(conversion(ech[z])) + " "
+            z -= 1
+            j += 1
+        print(ligne)
+        i -= 1
+    print('--------------------')
+    print('   a b c d e f g h') 
+
+affichage(ech)

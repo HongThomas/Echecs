@@ -10,17 +10,15 @@ def exist(case):
     '''Verifie si la case existe donc
     dans le tableau ech entre 0 et 63.
     '''
-    exist = conversion_tab(case)
-    return ( exist < 64 and exist >= 0)
+    return ( case < 64 and case >= 0)
 
-def color(case,ech):
-    '''Convertie case puis retourne
+def color(pos):
+    '''retourne
         si blanc, noir ou vide.
     '''
-    pos = conversion_tab(case)
-    if ech[pos] > 6:
+    if pos > 6:
         return 'black'
-    elif ech[pos] == 0:
+    elif pos == 0:
         return 'empty'
     return 'white'
 
